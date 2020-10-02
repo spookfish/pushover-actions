@@ -4,8 +4,9 @@ jobs:
     name: Pushover Notification
     runs-on: ubuntu-latest
     steps:
-    - name: send pushover message
-    - uses: actions/checkout@v2
+    - name: Checkout Code
+      uses: actions/checkout@v2
+    - name: Send Pushover Message
       uses: ./
       with:
         token: ${{ secrets.PUSHOVER_TOKEN }}
