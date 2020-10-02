@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: send pushover message
-      uses: actions/checkout@1.0.0
+      uses: actions/checkout@1.0.2
       with:
         token: ${{ secrets.PUSHOVER_TOKEN }}
         user: ${{ secrets.PUSHOVER_USER }}
