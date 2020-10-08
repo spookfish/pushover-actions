@@ -3,7 +3,6 @@ description: 'GitHub Action'
 author: 'spookfish'
   message:
     description: 'Message text'
-    required: true
   title:
     description: 'Message title'
   url:
