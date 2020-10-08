@@ -13,4 +13,4 @@ jobs:
           PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
           PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
         with:
-          message: 'from github workflow with love 42'
+          message: 'from github workflow with love ${{ job.status }}'
