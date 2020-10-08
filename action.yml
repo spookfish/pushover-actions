@@ -2,9 +2,10 @@ name: 'python docker testing'
 description: 'GitHub Action'
 author: 'spookfish'
 inputs:
+  status:
+    description: 'The current status of the job'
   message:
     description: 'Message text'
-    required: true
   title:
     description: 'Message title'
   url:
@@ -17,6 +18,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - --status=${{ inputs.status }}
     - --message=${{ inputs.message }}
     - --title=${{ inputs.title }}
     - --url=${{ inputs.url }}

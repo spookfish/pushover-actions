@@ -5,18 +5,12 @@ import requests
 
 def main():
     parser = argparse.ArgumentParser(description="Pushover Notifications")
-    # parser.add_argument('--token', 
-    #                     type=str, 
-    #                     required=True, 
-    #                     help='Application API token')
-    # parser.add_argument('--user',
-    #                     type=str, 
-    #                     required=True, 
-    #                     help='User/group key')
     parser.add_argument('--message',
                         type=str, 
-                        required=True, 
                         help='Message text')
+    parser.add_argument('--status',
+                        type=str, 
+                        help='The current status of the job')
     parser.add_argument('--title',
                         type=str, 
                         help='Message title')
@@ -33,11 +27,17 @@ def main():
     try:
         token   = os.environ['PUSHOVER_TOKEN']
         user    = os.environ['PUSHOVER_USER']
+        repo    = 'Repo:' + os.environ['GITHUB_REPOSITORY']
+        sha     = 'SHA: ' + os.environ['GITHUB_SHA']
+        ref     = 'REF: ' + os.environ['GITHUB_REF'] if 'GITHUB_REF' in os.environ else ''
+        status  = 'Status:' + args.status if args.status else ''
+        message = args.message is args.message else ''
+        message = '\n'.join([m for m in [repo, sha, ref, status, message] if m])
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
         payload = {
             'token'     : token,
             'user'      : user,
-            'message'   : args.message,
+            'message'   : message,
             'title'     : args.title,
             'url'       : args.url,
             'url_title' : args.url_title,

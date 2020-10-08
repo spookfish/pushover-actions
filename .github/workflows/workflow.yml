@@ -1,16 +1,16 @@
 name: pushover-actions
-
 on: push
-
 jobs:
   pushover-actions:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2 # required to clone your code
+      - uses: actions/checkout@v2 
       - name: pushover-actions
         uses: spookfish/pushover-actions@master
         env:
           PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
           PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
         with:
-          message: 'from github workflow with love ${{ job.status }} ${{ job.html_url }}'
+          status: ${{ job.status }}
+          title: 'Branch Push Notification'
+          message: 'The quick brown fox jumped over the lazy dog.'
