@@ -9,7 +9,8 @@ jobs:
       - uses: actions/checkout@v2 # required to clone your code
       - name: pushover-actions
         uses: spookfish/pushover-actions@master
+        env:
+          PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
+          PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
         with:
-          token: ${{ secrets.PUSHOVER_TOKEN }}
-          user: ${{ secrets.PUSHOVER_USER }}
-          message: 'from github workflow with love'
+          message: 'from github workflow with love 42'

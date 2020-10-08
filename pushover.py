@@ -1,16 +1,18 @@
-import requests
+import os
 import argparse
+
+import requests
 
 def main():
     parser = argparse.ArgumentParser(description="Pushover Notifications")
-    parser.add_argument('--token', 
-                        type=str, 
-                        required=True, 
-                        help='Application API token')
-    parser.add_argument('--user',
-                        type=str, 
-                        required=True, 
-                        help='User/group key')
+    # parser.add_argument('--token', 
+    #                     type=str, 
+    #                     required=True, 
+    #                     help='Application API token')
+    # parser.add_argument('--user',
+    #                     type=str, 
+    #                     required=True, 
+    #                     help='User/group key')
     parser.add_argument('--message',
                         type=str, 
                         required=True, 
@@ -29,10 +31,12 @@ def main():
                         help='Device name to send the message directly to')
     args = parser.parse_args()
     try:
+        token   = os.environ['PUSHOVER_TOKEN']
+        user    = os.environ['PUSHOVER_USER']
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
         payload = {
-            'token'     : args.token,
-            'user'      : args.user,
+            'token'     : token,
+            'user'      : user,
             'message'   : args.message,
             'title'     : args.title,
             'url'       : args.url,
