@@ -1,13 +1,6 @@
 name: 'python docker testing'
 description: 'GitHub Action'
 author: 'spookfish'
-inputs:
-  token:
-    description: 'Application API token'
-    required: true
-  user:
-    description: 'User/group key'
-    required: true
   message:
     description: 'Message text'
     required: true
@@ -23,8 +16,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - --token=${{ inputs.token }}
-    - --user=${{ inputs.user }}
     - --message=${{ inputs.message }}
     - --title=${{ inputs.title }}
     - --url=${{ inputs.url }}
