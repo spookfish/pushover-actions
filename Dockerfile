@@ -8,4 +8,4 @@ COPY . .
 
 RUN pip install requests
 
-ENTRYPOINT ["python3", "/home/script.py"]
+ENTRYPOINT ["python3", "/home/pushover.py"]
