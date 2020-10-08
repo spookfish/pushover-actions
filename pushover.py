@@ -31,7 +31,7 @@ def main():
         sha     = 'SHA: ' + os.environ['GITHUB_SHA']
         ref     = 'REF: ' + os.environ['GITHUB_REF'] if 'GITHUB_REF' in os.environ else ''
         status  = 'Status:' + args.status if args.status else ''
-        message = args.message is args.message else ''
+        message = args.message if args.message else ''
         message = '\n'.join([m for m in [repo, sha, ref, status, message] if m])
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
         payload = {
