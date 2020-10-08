@@ -1,14 +1,15 @@
+name: pushover-actions
+
 on: push
+
 jobs:
-  pushover-job:
-    name: Pushover Notification
+  pushover-actions:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v2
-    - name: Send Pushover Message
-      uses: ./
-      with:
-        token: ${{ secrets.PUSHOVER_TOKEN }}
-        user: ${{ secrets.PUSHOVER_USER }}
-        message: 'from github workflow with love'
+      - uses: actions/checkout@v2 # required to clone your code
+      - name: pushover-actions
+        uses: spookfish/pushover-actions@master
+        with:
+          token: ${{ secrets.PUSHOVER_TOKEN }}
+          user: ${{ secrets.PUSHOVER_USER }}
+          message: 'from github workflow with love'
